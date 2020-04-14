@@ -1,8 +1,14 @@
 <div class="row mt-5">
-    <div class="col-md-5">
-        <app-recipe-list></app-recipe-list>
+    <div class="col-md-5 ">
+        <app-recipe-list (recipeWasSelected)='setRecipeDetails($event)'></app-recipe-list>
     </div>
     <div class="col-md-7">
-        <app-recipe-detail></app-recipe-detail>
+         <ng-container *ngIf="getRecipeDetails() ; else elseTemplate">
+            <app-recipe-detail [recipeToShow]='getRecipeDetails()'></app-recipe-detail>
+        </ng-container>
+        <ng-template #elseTemplate>
+            plese select a recipe 
+        </ng-template>
+         
     </div>
 </div>
